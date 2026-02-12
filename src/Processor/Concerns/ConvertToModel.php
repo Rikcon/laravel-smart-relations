@@ -73,7 +73,7 @@ trait ConvertToModel
      */ 
     protected function findByPk(Relation $relation, $pk)
     {
-        $model = $relation->getRelated()->find($pk);
+        $model = $relation->getRelated()->resolveRouteBinding($pk);
         
         if ($model === null) {
             throw new IntegrityException(
